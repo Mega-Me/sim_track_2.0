@@ -7,6 +7,9 @@ require('./db/moongoose')
 // Import Routes
 const flightRecordRoutes = require('./routes/flightRecordRoutes');
 const scheduleRoutes = require('./routes/scheduleRoutes');
+const maintenanceRoutes = require('./routes/maintenanceRecordRoutes');
+const simulatorRoutes = require('./routes/simulatorRoutes');
+
                       
 // Initialize the Express App
 const app = express();
@@ -26,7 +29,9 @@ const PORT = 5000;
 // API Routes
 app.use(express.json())
 app.use('/api/flight-records', flightRecordRoutes);
+app.use('/api/maintenance-records', maintenanceRoutes);
 app.use('/api/schedules', scheduleRoutes);
+app.use('/api/simulators', simulatorRoutes);
 
 // Test Route
 app.get('/', (req, res) => {
