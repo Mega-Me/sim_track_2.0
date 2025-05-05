@@ -9,6 +9,9 @@ const flightRecordRoutes = require('./routes/flightRecordRoutes');
 const scheduleRoutes = require('./routes/scheduleRoutes');
 const maintenanceRoutes = require('./routes/maintenanceRecordRoutes');
 const simulatorRoutes = require('./routes/simulatorRoutes');
+const authRoutes = require('./routes/auth');
+
+
 
                       
 // Initialize the Express App
@@ -32,6 +35,7 @@ app.use('/api/flight-records', flightRecordRoutes);
 app.use('/api/maintenance-records', maintenanceRoutes);
 app.use('/api/schedules', scheduleRoutes);
 app.use('/api/simulators', simulatorRoutes);
+app.use('/api/auth', authRoutes);
 
 // Test Route
 app.get('/', (req, res) => {
