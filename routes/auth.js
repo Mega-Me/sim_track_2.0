@@ -39,11 +39,12 @@ router.post('/signup', async (req, res) => {
 });
 
 // Sign In
+// LOGIN Route
 router.post('/login', async (req, res) => {
   const { regNo, password } = req.body;
 
   if (!regNo || !password) {
-    return res.status(400).json({ message: 'Missing regNo or password' });
+    return res.status(400).json({ message: 'Missing credentials' });
   }
 
   try {
@@ -57,7 +58,15 @@ router.post('/login', async (req, res) => {
       return res.status(401).json({ message: 'Invalid credentials' });
     }
 
-    res.status(200).json({ message: 'Login successful' });
+    return res.status(200).json({
+      message: 'Login successful',
+      user: {
+        name: user.name,
+        regNo: user.regNo,
+        email: user.email,
+        position: user.position,
+      },
+    });
   } catch (err) {
     console.error('Login error:', err);
     res.status(500).json({ message: 'Server error' });
